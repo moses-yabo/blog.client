@@ -42,7 +42,7 @@ export default function Post({
   isMyProfile,
 }) {
   const [publishPost,{data,loading}] = useMutation(PUBLISH_POST);
-  const [unpublishPost,{_data,_loading}] = useMutation(UNPUBLISH_POST);
+  const [unPublishPost,{data:dataUnPublish,loading:loadingUnPublish}] = useMutation(UNPUBLISH_POST);
   const formatedDate = new Date(Number(date));
   return (
     <div
@@ -62,7 +62,7 @@ export default function Post({
       )}
       {isMyProfile && published === true && (
         <p className="Post__publish" onClick={() => {
-          unpublishPost({
+          unPublishPost({
             variables:{
               postId:id
             }
